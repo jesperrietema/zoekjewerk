@@ -671,6 +671,27 @@ a.contact-item:hover { box-shadow: inset 0 0 0 1px var(--line-strong), var(--sha
 .model--featured .btn--ghost { --fg: var(--white); box-shadow: inset 0 0 0 1px var(--line-dark-strong); }
 @media (max-width: 960px) { .models { grid-template-columns: 1fr; } }
 
+/* ---------- Maak kennis (foto + tekst op homepage) ---------- */
+.soft { background: var(--paper); }
+.founder { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.founder__photo { margin: 0; position: relative; }
+.founder__photo img { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: 0 0 0 1px var(--line), var(--shadow); background: var(--paper-2); }
+.founder__photo figcaption {
+  position: absolute; left: 16px; bottom: 16px;
+  display: grid; gap: 1px; padding: 10px 16px; border-radius: 8px;
+  background: rgba(255, 255, 255, .94); box-shadow: 0 0 0 1px var(--line), var(--shadow-sm);
+}
+.founder__photo figcaption b { font-weight: 600; font-size: 15px; }
+.founder__photo figcaption span { font-size: 13px; color: var(--muted); }
+.founder__copy { display: grid; gap: 22px; }
+.founder__copy > p:not(.lead) { color: var(--muted); max-width: 60ch; }
+.founder__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.btn .icon { width: 18px; height: 18px; }
+@media (max-width: 900px) {
+  .founder { grid-template-columns: 1fr; }
+  .founder__photo { max-width: 560px; }
+}
+
 /* ---------- Juridische pagina's (privacy, voorwaarden, cookies) ---------- */
 .legal-hero h1 { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
 .legal { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
