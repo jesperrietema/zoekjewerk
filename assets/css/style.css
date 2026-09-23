@@ -640,6 +640,11 @@ body.menu-open { overflow: hidden; }
   background: var(--accent) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center / 14px no-repeat;
 }
 @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+/* Sticky tekstkolom naast een formulier: alleen als de kolommen naast elkaar staan
+   en het scherm hoog genoeg is. In één kolom zou het formulier eroverheen schuiven. */
+@media (min-width: 901px) and (min-height: 820px) {
+  .split__copy--sticky { position: sticky; top: 130px; }
+}
 
 /* Visual panel */
 .panel {
