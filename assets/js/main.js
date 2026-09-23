@@ -388,7 +388,7 @@
 
     const unique = (k) => [...new Set(JOBS.map((j) => j[k]))].sort((a, b) => a.localeCompare(b, "nl"));
     const cities = [...new Set(JOBS.flatMap((j) => j.location.split(" / ").filter((c) => c !== "Remote")))].sort((a, b) => a.localeCompare(b, "nl"));
-    locSelect.innerHTML = '<option value="">Alle locaties</option>' + cities.map((c) => `<option ${c === state.loc ? "selected" : ""}>${esc(c)}</option>`).join("") + `<option value="Remote" ${state.loc === "Remote" ? "selected" : ""}>Remote</option>`;
+    locSelect.innerHTML = '<option value="">Alle locaties</option>' + cities.map((c) => `<option ${c === state.loc ? "selected" : ""}>${esc(c)}</option>`).join("") + (JOBS.some((j) => j.location.includes("Remote")) ? `<option value="Remote" ${state.loc === "Remote" ? "selected" : ""}>Remote</option>` : "");
 
     const buildFilter = (el, key, name) => {
       el.innerHTML = unique(key).map((v, i) => {

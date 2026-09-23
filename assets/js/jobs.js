@@ -1,403 +1,410 @@
 /* ==========================================================================
    Vacatures — pas deze lijst aan om vacatures toe te voegen of te wijzigen.
    featured: true  → wordt getoond op de homepage (maximaal 3).
+   sector: gebruik altijd een van deze drie (dan werken de filters en links):
+     "Sales & Commercieel" · "Office & Digital" · "Techniek & Bouw"
    ========================================================================== */
 
 window.ZJW_JOBS = [
+  /* ---------------------------- Sales & Commercieel ---------------------------- */
   {
-    id: "junior-data-analyst",
-    title: "Junior Data Analyst",
-    company: "Fintech scale-up",
-    sector: "Data & Analytics",
-    location: "Amsterdam",
-    type: "Fulltime",
-    hours: "36–40 uur",
-    level: "Starter",
-    salary: "€3.200 – €3.900",
-    period: "per maand",
-    posted: 2,
-    featured: true,
-    summary: "Je vertaalt data naar inzichten die direct invloed hebben op product- en groeibeslissingen van een snelgroeiend betaalplatform met meer dan 200.000 zakelijke gebruikers.",
-    tasks: [
-      "Bouwen en onderhouden van dashboards in Looker en SQL",
-      "Analyseren van klantgedrag en conversie in de onboarding-funnel",
-      "Opzetten en evalueren van A/B-testen samen met het productteam",
-      "Presenteren van inzichten aan management en stakeholders"
-    ],
-    profile: [
-      "Afgeronde hbo- of wo-opleiding, bijvoorbeeld econometrie, BA of informatica",
-      "Ervaring met SQL; Python of R is een pré",
-      "Analytisch sterk en je legt complexe zaken eenvoudig uit",
-      "Uitstekende beheersing van Nederlands en Engels"
-    ],
-    offer: [
-      "Persoonlijk opleidingsbudget van €2.000 per jaar",
-      "Hybride werken: 2 dagen kantoor aan de Zuidas",
-      "Aandelenoptieplan en 27 vakantiedagen",
-      "Een senior buddy en een intern data-academyprogramma"
-    ]
-  },
-  {
-    id: "traineeship-business-consultancy",
-    title: "Traineeship Business Consultancy",
-    company: "Internationaal adviesbureau",
-    sector: "Consultancy",
-    location: "Utrecht",
-    type: "Traineeship",
-    hours: "40 uur",
-    level: "Starter",
-    salary: "€3.400 – €3.800",
-    period: "per maand",
-    posted: 4,
-    featured: true,
-    summary: "Een tweejarig traineeship waarin je drie opdrachten draait bij toonaangevende klanten in de publieke sector, zorg en energie — met een vaste plek in een hecht trainee-cohort.",
-    tasks: [
-      "Meewerken aan verandertrajecten bij grote organisaties",
-      "Uitvoeren van analyses, interviews en workshops",
-      "Opstellen van adviesrapporten en presentaties",
-      "Volgen van een intensief opleidingsprogramma met masterclasses"
-    ],
-    profile: [
-      "Recent afgestudeerd (wo), richting maakt niet uit",
-      "Nieuwsgierig, communicatief sterk en stressbestendig",
-      "Aantoonbare ambitie via studie, bestuur of bijbaan",
-      "Rijbewijs B is een pré"
-    ],
-    offer: [
-      "Gegarandeerd vast contract na succesvol traineeship",
-      "Lease-auto of NS Business Card naar keuze",
-      "Persoonlijke coach en mentor",
-      "Jaarlijkse salarisstap op basis van groei"
-    ]
-  },
-  {
-    id: "junior-frontend-engineer",
-    title: "Junior Software Engineer — Frontend",
-    company: "SaaS scale-up",
-    sector: "Tech & IT",
-    location: "Utrecht / Remote",
-    type: "Fulltime",
-    hours: "32–40 uur",
-    level: "Starter",
-    salary: "€3.300 – €4.200",
-    period: "per maand",
-    posted: 1,
-    featured: true,
-    summary: "Werk aan een platform dat door honderden logistieke bedrijven dagelijks wordt gebruikt. Je bouwt features van idee tot productie in een team van zes engineers.",
-    tasks: [
-      "Ontwikkelen van nieuwe features in React en TypeScript",
-      "Meedenken over UX samen met de product designer",
-      "Schrijven van tests en meedoen aan code reviews",
-      "Bijdragen aan het interne design system"
-    ],
-    profile: [
-      "Hbo/wo in informatica of een vergelijkbare bootcamp",
-      "Eerste ervaring met React of een ander modern framework",
-      "Je vindt goede code en goede UX even belangrijk",
-      "Teamspeler met eigen initiatief"
-    ],
-    offer: [
-      "Volledig remote mogelijk, kantoor in Utrecht Centraal",
-      "MacBook Pro en €750 thuiswerkbudget",
-      "Vier weken per jaar voor eigen leerprojecten",
-      "Pensioenregeling zonder eigen bijdrage"
-    ]
-  },
-  {
-    id: "marketing-coordinator",
-    title: "Marketing Coördinator",
-    company: "Duurzaam D2C-merk",
-    sector: "Marketing",
-    location: "Rotterdam",
-    type: "Fulltime",
-    hours: "36–40 uur",
-    level: "Young professional",
-    salary: "€2.900 – €3.500",
-    period: "per maand",
-    posted: 6,
-    featured: false,
-    summary: "Je coördineert campagnes over alle kanalen voor een snelgroeiend, duurzaam lifestylemerk dat actief is in vijf Europese landen.",
-    tasks: [
-      "Plannen en coördineren van online en offline campagnes",
-      "Aansturen van freelancers en creatieve partners",
-      "Rapporteren over campagneprestaties en budget",
-      "Meedenken over merkpositionering en nieuwe markten"
-    ],
-    profile: [
-      "Hbo/wo-diploma in marketing, communicatie of vergelijkbaar",
-      "1–2 jaar ervaring in marketing of e-commerce",
-      "Sterk in plannen en schakelen tussen projecten",
-      "Affiniteit met duurzaamheid"
-    ],
-    offer: [
-      "Een merk met een duidelijke missie",
-      "Kantoor in een monumentaal pand aan de Maas",
-      "Personeelskorting en flexibele werktijden",
-      "Groeipad richting Marketing Manager"
-    ]
-  },
-  {
-    id: "junior-accountmanager",
+    id: "junior-accountmanager-b2b",
     title: "Junior Accountmanager B2B",
-    company: "Logistieke dienstverlener",
-    sector: "Sales",
-    location: "Eindhoven",
+    company: "Groothandel in installatietechniek",
+    sector: "Sales & Commercieel",
+    location: "Groningen",
     type: "Fulltime",
     hours: "40 uur",
     level: "Starter",
     salary: "€2.800 – €3.400",
     period: "per maand + bonus",
-    posted: 3,
-    featured: false,
-    summary: "Je bouwt duurzame relaties op met zakelijke klanten in de Brainport-regio en groeit door naar een eigen klantportefeuille.",
+    posted: 2,
+    featured: true,
+    summary: "Je bouwt duurzame relaties op met installateurs en aannemers in Noord-Nederland en groeit door naar een eigen klantportefeuille bij een groothandel met een sterke naam in de regio.",
     tasks: [
-      "Onderhouden en uitbouwen van bestaande klantrelaties",
-      "Voeren van adviesgesprekken en opstellen van offertes",
-      "Samenwerken met operations voor maatwerkoplossingen",
-      "Bijhouden van pipeline en forecast in het CRM"
+      "Bezoeken en adviseren van bestaande zakelijke klanten",
+      "Actief benaderen van nieuwe klanten in je regio",
+      "Opstellen van offertes in samenwerking met de binnendienst",
+      "Bijhouden van je pipeline en afspraken in het CRM"
     ],
     profile: [
-      "Hbo-denkniveau, bijvoorbeeld commerciële economie of logistiek",
-      "Commercieel, representatief en resultaatgericht",
-      "Je haalt energie uit klantcontact",
+      "Mbo-4- of hbo-denkniveau, bijvoorbeeld commerciële economie",
+      "Commercieel, representatief en je haalt energie uit klantcontact",
+      "Affiniteit met techniek is een pré",
       "Rijbewijs B"
     ],
     offer: [
-      "Aantrekkelijke bonusregeling zonder plafond",
       "Auto van de zaak, ook privé te gebruiken",
-      "Salestraining bij een extern opleidingsinstituut",
+      "Bonusregeling op basis van omzet en nieuwe klanten",
+      "Salestraining en een ervaren accountmanager als buddy",
       "Informele cultuur in een groeiend familiebedrijf"
     ]
   },
   {
-    id: "stage-hr-talent",
-    title: "Stage HR & Talent Acquisition",
-    company: "Tech scale-up",
-    sector: "HR",
-    location: "Amsterdam",
-    type: "Stage",
-    hours: "32–40 uur",
-    level: "Student",
-    salary: "€650",
-    period: "stagevergoeding p/m",
-    posted: 5,
-    featured: false,
-    summary: "Een meewerkstage van 5–6 maanden waarin je het volledige wervingsproces leert kennen bij een internationaal team van 180 mensen.",
-    tasks: [
-      "Ondersteunen bij sourcing en het plannen van interviews",
-      "Meedenken over employer branding-campagnes",
-      "Verbeteren van de onboarding-ervaring",
-      "Een eigen onderzoeksproject binnen HR"
-    ],
-    profile: [
-      "Hbo- of wo-student HRM, bedrijfskunde of psychologie",
-      "Beschikbaar voor minimaal vijf maanden",
-      "Communicatief sterk in Nederlands en Engels",
-      "Proactief en nauwkeurig"
-    ],
-    offer: [
-      "Stagevergoeding van €650 per maand",
-      "Laptop en lunch op kantoor",
-      "Kans op een aansluitende baan",
-      "Begeleiding door een ervaren talent lead"
-    ]
-  },
-  {
-    id: "junior-financial-controller",
-    title: "Junior Financial Controller",
-    company: "Familiebedrijf in food",
-    sector: "Finance",
-    location: "'s-Hertogenbosch",
+    id: "inside-sales-medewerker",
+    title: "Inside Sales Medewerker",
+    company: "Softwarebedrijf voor de bouw",
+    sector: "Sales & Commercieel",
+    location: "Zwolle",
     type: "Fulltime",
     hours: "36–40 uur",
-    level: "Young professional",
-    salary: "€3.300 – €4.000",
-    period: "per maand",
-    posted: 8,
-    featured: false,
-    summary: "Je bent de financiële sparringpartner van de operatie in een internationaal familiebedrijf met productielocaties in drie landen.",
-    tasks: [
-      "Opstellen van maand- en kwartaalrapportages",
-      "Analyseren van kostprijzen en marges per productlijn",
-      "Meewerken aan budget en forecast",
-      "Verbeteren van financiële processen en tooling"
-    ],
-    profile: [
-      "Wo- of hbo-diploma in bedrijfseconomie, accountancy of finance",
-      "0–3 jaar werkervaring, bijvoorbeeld bij een accountantskantoor",
-      "Sterk in Excel; Power BI is een pré",
-      "Kritisch, zelfstandig en hands-on"
-    ],
-    offer: [
-      "Vaste aanstelling bij een stabiele werkgever",
-      "Studiefaciliteiten voor RC of RA",
-      "13e maand en winstdeling",
-      "Korte lijnen met directie"
-    ]
-  },
-  {
-    id: "customer-success-specialist",
-    title: "Customer Success Specialist",
-    company: "HR-tech platform",
-    sector: "Customer Success",
-    location: "Amsterdam",
-    type: "Fulltime",
-    hours: "32–40 uur",
     level: "Starter",
-    salary: "€2.900 – €3.400",
-    period: "per maand",
-    posted: 2,
+    salary: "€2.700 – €3.200",
+    period: "per maand + bonus",
+    posted: 3,
     featured: false,
-    summary: "Je zorgt dat klanten het maximale uit het platform halen, van onboarding tot verlenging, en je bent de stem van de klant richting product.",
+    summary: "Je bent het eerste aanspreekpunt voor bouw- en installatiebedrijven die interesse hebben in de software. Je kwalificeert leads, plant demo's en sluit zelf kleinere deals.",
     tasks: [
-      "Onboarden en trainen van nieuwe klanten",
-      "Proactief monitoren van gebruik en klanttevredenheid",
-      "Signaleren van upsell-kansen",
-      "Doorgeven van feedback aan het productteam"
+      "Opvolgen van inkomende leads via telefoon en e-mail",
+      "Geven van online productdemonstraties",
+      "Plannen van afspraken voor de accountmanagers",
+      "Meedenken over campagnes met het marketingteam"
     ],
     profile: [
-      "Afgeronde hbo- of wo-opleiding",
-      "Klantgericht, geduldig en oplossingsgericht",
-      "Affiniteit met software en HR",
-      "Uitstekend Nederlands en goed Engels"
+      "Afgeronde mbo-4- of hbo-opleiding",
+      "Je bent telefonisch sterk en vindt het leuk om te overtuigen",
+      "Interesse in software en de bouwsector",
+      "Goede beheersing van de Nederlandse taal"
     ],
     offer: [
-      "Hybride werken en flexibele uren",
-      "Mental health-budget en sportabonnement",
-      "Duidelijk carrièrepad richting Account Manager",
-      "Jaarlijkse teamtrip"
+      "Duidelijk groeipad richting Accountmanager",
+      "Hybride werken na je inwerkperiode",
+      "Laptop, telefoon en een opleidingsbudget",
+      "Vrijdagmiddagborrel met een jong team"
     ]
   },
   {
-    id: "junior-legal-counsel",
-    title: "Junior Legal Counsel",
-    company: "Energiebedrijf",
-    sector: "Legal",
-    location: "Den Haag",
-    type: "Fulltime",
-    hours: "36 uur",
-    level: "Young professional",
-    salary: "€3.500 – €4.300",
-    period: "per maand",
-    posted: 9,
-    featured: false,
-    summary: "Werk op het snijvlak van recht en de energietransitie bij een organisatie die investeert in duurzame opwek en netwerkinfrastructuur.",
-    tasks: [
-      "Opstellen en beoordelen van contracten",
-      "Adviseren van business units over juridische vraagstukken",
-      "Ondersteunen bij aanbestedingen en compliance",
-      "Volgen van relevante wet- en regelgeving"
-    ],
-    profile: [
-      "Master Nederlands recht, bij voorkeur ondernemingsrecht",
-      "Eerste ervaring via een stage of student-assistentschap",
-      "Zakelijk inzicht en pragmatische houding",
-      "Sterke schriftelijke vaardigheden"
-    ],
-    offer: [
-      "Maatschappelijk relevant werk",
-      "Uitstekende cao met 36-urige werkweek",
-      "Budget voor opleidingen en PAO-cursussen",
-      "Moderne werkplek naast Den Haag Centraal"
-    ]
-  },
-  {
-    id: "content-creator-parttime",
-    title: "Content Creator (parttime)",
-    company: "Creatief bureau",
-    sector: "Marketing",
-    location: "Groningen",
-    type: "Parttime",
-    hours: "16–24 uur",
-    level: "Student",
-    salary: "€16 – €18",
-    period: "per uur",
-    posted: 1,
-    featured: false,
-    summary: "Een ideale baan naast je studie: je maakt social content voor merken in retail, food en cultuur, samen met een jong creatief team.",
-    tasks: [
-      "Bedenken en maken van short-form video en fotografie",
-      "Schrijven van captions en scripts",
-      "Meedenken in brainstorms voor campagnes",
-      "Bijhouden van trends op TikTok en Instagram"
-    ],
-    profile: [
-      "Student (hbo/wo) of net afgestudeerd",
-      "Een portfolio of eigen kanaal waar je trots op bent",
-      "Ervaring met CapCut, Premiere of vergelijkbaar",
-      "Beschikbaar voor minimaal twee dagen per week"
-    ],
-    offer: [
-      "Flexibele roosters rondom je studie",
-      "Werken voor echte merken en campagnes",
-      "Toegang tot professionele apparatuur",
-      "Doorgroeimogelijkheden na je studie"
-    ]
-  },
-  {
-    id: "junior-supply-chain-analyst",
-    title: "Junior Supply Chain Analyst",
-    company: "Internationaal e-commerceplatform",
-    sector: "Supply Chain",
+    id: "sales-trainee-duurzame-energie",
+    title: "Sales Trainee Duurzame Energie",
+    company: "Energieleverancier voor het mkb",
+    sector: "Sales & Commercieel",
     location: "Utrecht",
-    type: "Fulltime",
-    hours: "40 uur",
-    level: "Starter",
-    salary: "€3.100 – €3.700",
-    period: "per maand",
-    posted: 7,
-    featured: false,
-    summary: "Je optimaliseert voorraad en logistieke stromen voor een platform dat dagelijks tienduizenden orders door heel Europa verwerkt.",
-    tasks: [
-      "Analyseren van voorraadniveaus en leverbetrouwbaarheid",
-      "Bouwen van forecastmodellen",
-      "Signaleren van knelpunten en verbeterkansen",
-      "Samenwerken met inkoop, warehouse en vervoerders"
-    ],
-    profile: [
-      "Hbo/wo-diploma in logistiek, technische bedrijfskunde of econometrie",
-      "Sterk analytisch en cijfermatig",
-      "Ervaring met Excel en bij voorkeur SQL",
-      "Je houdt van structuur in complexe processen"
-    ],
-    offer: [
-      "Internationale, dynamische werkomgeving",
-      "Uitgebreid trainingsprogramma in het eerste jaar",
-      "Hybride werken en een NS Business Card",
-      "Personeelskorting op het volledige assortiment"
-    ]
-  },
-  {
-    id: "graduate-product-owner",
-    title: "Graduate Product Owner",
-    company: "Digitale bank",
-    sector: "Tech & IT",
-    location: "Amsterdam",
     type: "Traineeship",
     hours: "40 uur",
     level: "Starter",
-    salary: "€3.600 – €4.100",
+    salary: "€3.000 – €3.400",
     period: "per maand",
-    posted: 3,
+    posted: 5,
     featured: false,
-    summary: "In achttien maanden groei je uit tot volwaardig Product Owner binnen een bank die volledig mobiel werkt en snel groeit in Europa.",
+    summary: "Een traineeship van twaalf maanden waarin je alle kanten van B2B-sales leert: van leadgeneratie tot het sluiten van contracten met mkb-ondernemers die willen verduurzamen.",
     tasks: [
-      "Rotaties in drie verschillende productteams",
-      "Schrijven van user stories en prioriteren van de backlog",
-      "Klantonderzoek en data-analyse om keuzes te onderbouwen",
-      "Presenteren van resultaten aan leadership"
+      "Rotaties langs inside sales, field sales en accountmanagement",
+      "Adviesgesprekken met ondernemers over energie en besparing",
+      "Voorbereiden en presenteren van voorstellen",
+      "Een eigen verbeterproject binnen het salesteam"
     ],
     profile: [
-      "Recent afgestudeerd (wo), technisch of bedrijfskundig",
-      "Scherp analytisch en communicatief sterk",
-      "Affiniteit met technologie en klantgedrag",
-      "Vloeiend Engels"
+      "Recent afgestudeerd (hbo of wo)",
+      "Commercieel ingesteld en resultaatgericht",
+      "Interesse in duurzaamheid en de energietransitie",
+      "Rijbewijs B"
     ],
     offer: [
-      "Opleiding tot gecertificeerd Product Owner",
-      "Hybride werken met een top-locatie in Amsterdam",
-      "Pensioen, bonus en ruime vakantieregeling",
-      "Internationaal graduate-netwerk"
+      "Vast contract na een succesvol traineeship",
+      "Persoonlijke coach en salesopleiding",
+      "Lease-auto of NS Business Card",
+      "Werk dat bijdraagt aan de energietransitie"
+    ]
+  },
+  {
+    id: "commercieel-medewerker-parttime",
+    title: "Commercieel Medewerker Binnendienst (parttime)",
+    company: "Autobedrijf",
+    sector: "Sales & Commercieel",
+    location: "Veendam",
+    type: "Parttime",
+    hours: "16–24 uur",
+    level: "Student",
+    salary: "€14 – €16",
+    period: "per uur",
+    posted: 1,
+    featured: false,
+    summary: "Een bijbaan naast je studie waarin je klanten te woord staat, proefritten inplant en de verkopers ondersteunt bij een autobedrijf in de regio.",
+    tasks: [
+      "Beantwoorden van telefoon, e-mail en websiteaanvragen",
+      "Inplannen van proefritten en werkplaatsafspraken",
+      "Voorbereiden van offertes en verkoopdossiers",
+      "Klanten ontvangen in de showroom"
+    ],
+    profile: [
+      "Student (mbo, hbo of wo) of net afgestudeerd",
+      "Klantvriendelijk en goed in het Nederlands",
+      "Beschikbaar op minimaal twee dagdelen en af en toe op zaterdag",
+      "Interesse in auto's is mooi meegenomen"
+    ],
+    offer: [
+      "Flexibele roosters rondom je studie",
+      "Commerciële ervaring voor op je cv",
+      "Personeelskorting op onderhoud",
+      "Kans op een vaste baan na je studie"
+    ]
+  },
+
+  /* ------------------------------ Office & Digital ----------------------------- */
+  {
+    id: "office-manager",
+    title: "Office Manager",
+    company: "Architecten- en ingenieursbureau",
+    sector: "Office & Digital",
+    location: "Groningen",
+    type: "Fulltime",
+    hours: "32–40 uur",
+    level: "Young professional",
+    salary: "€2.900 – €3.500",
+    period: "per maand",
+    posted: 2,
+    featured: true,
+    summary: "Je bent de spil van een kantoor met 35 collega's. Je zorgt dat alles soepel loopt: van facilitaire zaken en planning tot de onboarding van nieuwe collega's.",
+    tasks: [
+      "Aansturen van de receptie en facilitaire zaken",
+      "Agendabeheer en ondersteuning van de directie",
+      "Organiseren van bijeenkomsten en personeelsuitjes",
+      "Verbeteren van kantoorprocessen en digitale tools"
+    ],
+    profile: [
+      "Mbo-4- of hbo-opleiding, bijvoorbeeld office management",
+      "1 à 2 jaar ervaring in een ondersteunende rol",
+      "Sterk in plannen, organiseren en overzicht houden",
+      "Handig met Microsoft 365"
+    ],
+    offer: [
+      "Een zelfstandige rol met veel vrijheid",
+      "Kantoor in een monumentaal pand in de binnenstad",
+      "Opleidingsbudget en pensioenregeling",
+      "Een hecht team met korte lijnen"
+    ]
+  },
+  {
+    id: "marketing-content-medewerker",
+    title: "Marketing & Content Medewerker",
+    company: "Groeiende webshop",
+    sector: "Office & Digital",
+    location: "Assen",
+    type: "Fulltime",
+    hours: "36–40 uur",
+    level: "Starter",
+    salary: "€2.600 – €3.100",
+    period: "per maand",
+    posted: 4,
+    featured: false,
+    summary: "Je maakt content voor website, social media en nieuwsbrieven van een webshop die sterk groeit in Nederland en België, en je ziet direct wat je werk oplevert.",
+    tasks: [
+      "Schrijven van productteksten, blogs en nieuwsbrieven",
+      "Maken en inplannen van social media content",
+      "Beheren van de website in het CMS",
+      "Rapporteren over bereik en conversie"
+    ],
+    profile: [
+      "Afgeronde mbo-4- of hbo-opleiding in marketing of communicatie",
+      "Sterk in schrijven en visueel ingesteld",
+      "Ervaring met Canva, Meta Business Suite of vergelijkbaar",
+      "Je werkt graag zelfstandig en neemt initiatief"
+    ],
+    offer: [
+      "Veel ruimte voor eigen ideeën",
+      "Personeelskorting op het assortiment",
+      "Budget voor cursussen in online marketing",
+      "Gratis parkeren en een goede lunch"
+    ]
+  },
+  {
+    id: "stage-online-marketing",
+    title: "Stage Online Marketing",
+    company: "Online marketingbureau",
+    sector: "Office & Digital",
+    location: "Groningen",
+    type: "Stage",
+    hours: "32–40 uur",
+    level: "Student",
+    salary: "€500",
+    period: "stagevergoeding p/m",
+    posted: 6,
+    featured: false,
+    summary: "Een meewerkstage van vijf maanden waarin je meedraait in campagnes voor klanten in de regio: van Google Ads en SEO tot social advertising.",
+    tasks: [
+      "Opzetten en optimaliseren van advertentiecampagnes",
+      "Zoekwoordonderzoek en SEO-verbeteringen",
+      "Maken van rapportages voor klanten",
+      "Een eigen onderzoeksopdracht voor je opleiding"
+    ],
+    profile: [
+      "Mbo-4- of hbo-student marketing, communicatie of vergelijkbaar",
+      "Beschikbaar voor minimaal vijf maanden",
+      "Analytisch en nieuwsgierig naar hoe online marketing werkt",
+      "Goede beheersing van Nederlands en Engels"
+    ],
+    offer: [
+      "Stagevergoeding van €500 per maand",
+      "Persoonlijke begeleiding door een senior specialist",
+      "Google Ads-certificering tijdens je stage",
+      "Kans op een baan na afronding"
+    ]
+  },
+  {
+    id: "administratief-medewerker-parttime",
+    title: "Administratief Medewerker (parttime)",
+    company: "Transport- en logistiekbedrijf",
+    sector: "Office & Digital",
+    location: "Hoogezand",
+    type: "Parttime",
+    hours: "16–24 uur",
+    level: "Student",
+    salary: "€14 – €16",
+    period: "per uur",
+    posted: 3,
+    featured: false,
+    summary: "Een bijbaan op kantoor bij een vervoerder in de regio. Je verwerkt orders en vrachtdocumenten en bent aanspreekpunt voor klanten en chauffeurs.",
+    tasks: [
+      "Invoeren en controleren van orders en vrachtbrieven",
+      "Beantwoorden van vragen van klanten en chauffeurs",
+      "Ondersteunen van de planning",
+      "Archiveren en bijhouden van administratie"
+    ],
+    profile: [
+      "Student (mbo, hbo of wo)",
+      "Nauwkeurig en handig met Excel",
+      "Beschikbaar op minimaal twee vaste dagen",
+      "Klantvriendelijk en stressbestendig"
+    ],
+    offer: [
+      "Vaste werkdagen die passen bij je rooster",
+      "Reiskostenvergoeding",
+      "Gezellig team en informele sfeer",
+      "Doorgroeimogelijkheden naar planning"
+    ]
+  },
+
+  /* ------------------------------- Techniek & Bouw ------------------------------ */
+  {
+    id: "werkvoorbereider-utiliteitsbouw",
+    title: "Werkvoorbereider Utiliteitsbouw",
+    company: "Bouwbedrijf",
+    sector: "Techniek & Bouw",
+    location: "Groningen",
+    type: "Fulltime",
+    hours: "40 uur",
+    level: "Starter",
+    salary: "€3.000 – €3.700",
+    period: "per maand",
+    posted: 1,
+    featured: true,
+    summary: "Je vertaalt het ontwerp naar een uitvoerbaar plan voor scholen, kantoren en zorggebouwen in Noord-Nederland, samen met de projectleider en de uitvoerder.",
+    tasks: [
+      "Opstellen van planningen en werktekeningen",
+      "Aanvragen van offertes en inkopen van materialen",
+      "Afstemmen met onderaannemers en leveranciers",
+      "Bewaken van kwaliteit, veiligheid en budget"
+    ],
+    profile: [
+      "Mbo-4- of hbo-opleiding bouwkunde of civiele techniek",
+      "Eerste ervaring via stage of bijbaan in de bouw is een pré",
+      "Georganiseerd, nauwkeurig en communicatief sterk",
+      "Rijbewijs B"
+    ],
+    offer: [
+      "Vast contract bij een stabiele werkgever",
+      "Opleidingstraject met een ervaren werkvoorbereider",
+      "Auto van de zaak of reiskostenvergoeding",
+      "Cao Bouw & Infra met goede secundaire voorwaarden"
+    ]
+  },
+  {
+    id: "junior-projectleider-installatietechniek",
+    title: "Junior Projectleider Installatietechniek",
+    company: "Installatiebedrijf",
+    sector: "Techniek & Bouw",
+    location: "Zwolle",
+    type: "Fulltime",
+    hours: "40 uur",
+    level: "Young professional",
+    salary: "€3.300 – €4.000",
+    period: "per maand",
+    posted: 4,
+    featured: false,
+    summary: "Je leidt installatieprojecten van opdracht tot oplevering, van warmtepompen in woningen tot complete installaties in bedrijfspanden.",
+    tasks: [
+      "Aansturen van monteurs en onderaannemers",
+      "Bewaken van planning, kosten en kwaliteit",
+      "Contact met opdrachtgevers en adviseurs",
+      "Verzorgen van meer- en minderwerk en oplevering"
+    ],
+    profile: [
+      "Hbo werktuigbouwkunde, elektrotechniek of installatietechniek",
+      "1 à 3 jaar ervaring in de installatiebranche",
+      "Organisatorisch sterk en oplossingsgericht",
+      "Rijbewijs B"
+    ],
+    offer: [
+      "Auto van de zaak, laptop en telefoon",
+      "Opleidingen via het eigen opleidingsprogramma",
+      "Doorgroeien naar projectleider grote projecten",
+      "Cao Metaal & Techniek"
+    ]
+  },
+  {
+    id: "monteur-zonnepanelen-starter",
+    title: "Monteur Zonnepanelen (starter)",
+    company: "Duurzaam installatiebedrijf",
+    sector: "Techniek & Bouw",
+    location: "Veendam",
+    type: "Fulltime",
+    hours: "38–40 uur",
+    level: "Starter",
+    salary: "€2.500 – €3.000",
+    period: "per maand",
+    posted: 2,
+    featured: false,
+    summary: "Je installeert zonnepanelen en thuisbatterijen bij particulieren en bedrijven in Groningen en Drenthe. Geen ervaring? Je krijgt een volledige opleiding.",
+    tasks: [
+      "Monteren van zonnepanelen op daken",
+      "Aansluiten van omvormers en thuisbatterijen",
+      "Uitleg geven aan klanten na de installatie",
+      "Werken in een vast duo met een ervaren monteur"
+    ],
+    profile: [
+      "Mbo-2 of hoger, bij voorkeur in techniek",
+      "Je bent handig, werkt graag buiten en hebt geen hoogtevrees",
+      "VCA of de bereidheid dit te halen",
+      "Rijbewijs B is een pré"
+    ],
+    offer: [
+      "Betaalde opleiding en certificeringen",
+      "Bedrijfsbus en modern gereedschap",
+      "Vaste werktijden, geen weekendwerk",
+      "Werk dat direct bijdraagt aan verduurzaming"
+    ]
+  },
+  {
+    id: "stage-calculator-bouw",
+    title: "Stage Calculatie & Werkvoorbereiding",
+    company: "Aannemersbedrijf",
+    sector: "Techniek & Bouw",
+    location: "Leeuwarden",
+    type: "Stage",
+    hours: "32–40 uur",
+    level: "Student",
+    salary: "€450",
+    period: "stagevergoeding p/m",
+    posted: 7,
+    featured: false,
+    summary: "Een afstudeer- of meewerkstage bij een aannemer in woningbouw en renovatie, waarin je meedraait met calculatie en werkvoorbereiding van echte projecten.",
+    tasks: [
+      "Maken van hoeveelheidsberekeningen en begrotingen",
+      "Meewerken aan planningen en inkoop",
+      "Bezoeken van bouwplaatsen met de uitvoerder",
+      "Een eigen afstudeeronderzoek binnen het bedrijf"
+    ],
+    profile: [
+      "Mbo-4- of hbo-student bouwkunde",
+      "Beschikbaar voor minimaal vier maanden",
+      "Nauwkeurig en goed met cijfers",
+      "Ervaring met Excel; kennis van calculatiesoftware is een pré"
+    ],
+    offer: [
+      "Stagevergoeding van €450 per maand",
+      "Een vaste begeleider en een eigen werkplek",
+      "Echte verantwoordelijkheid binnen lopende projecten",
+      "Kans op een baan na je afstuderen"
     ]
   }
 ];
