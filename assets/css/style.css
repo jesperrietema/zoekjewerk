@@ -304,9 +304,24 @@ body.menu-open { overflow: hidden; }
 .match__label em { font-style: normal; color: var(--accent); }
 .match__row { display: flex; align-items: center; gap: 14px; }
 .avatar {
-  width: 48px; height: 48px; border-radius: 14px; flex: none;
-  display: grid; place-items: center; font-weight: 600; font-size: 16px;
-  background: linear-gradient(135deg, var(--accent), #0B4FB0); color: var(--white);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  background: linear-gradient(135deg, var(--accent), #0B4FB0);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .avatar--org { background: linear-gradient(135deg, #5B7CFF, #3A4FD8); color: var(--white); }
 .match__name { font-weight: 600; font-size: 17px; letter-spacing: -.02em; }
