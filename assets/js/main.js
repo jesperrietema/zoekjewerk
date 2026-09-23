@@ -14,17 +14,8 @@
   const ICON_ARROW ='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   const ICON_PIN = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
 
-  /* ---------- Page curtain ---------- */
-  const curtain = $(".curtain");
-  if (curtain) {
-    if (sessionStorageGet("zjw-visited")) curtain.remove();
-    else {
-      sessionStorageSet("zjw-visited", "1");
-      setTimeout(() => curtain.remove(), 1500);
-    }
-  }
-  function sessionStorageGet(k) { try { return sessionStorage.getItem(k); } catch { return null; } }
-  function sessionStorageSet(k, v) { try { sessionStorage.setItem(k, v); } catch { /* ignore */ } }
+  /* ---------- Page curtain (uitgeschakeld) ---------- */
+  $(".curtain")?.remove();
 
   /* ---------- Header ---------- */
   const header = $(".header");
@@ -512,7 +503,7 @@
                 <div><b>Upload je CV</b><span>PDF of Word, max. 5 MB</span></div>
               </label>
               <div class="field"><label for="a-mot">Korte motivatie <span class="muted">(optioneel)</span></label><textarea id="a-mot" name="motivatie" placeholder="Wat spreekt je aan in deze rol?"></textarea></div>
-              <label class="consent"><input type="checkbox" required> <span>Ik ga akkoord met de verwerking van mijn gegevens volgens de <a href="#">privacyverklaring</a>.</span></label>
+              <label class="consent"><input type="checkbox" required> <span>Ik ga akkoord met de verwerking van mijn gegevens volgens de <a href="privacyverklaring.html" target="_blank" rel="noopener">privacyverklaring</a>.</span></label>
               <button class="btn btn--accent btn--block" type="submit">Verstuur sollicitatie ${ICON_ARROW.replace("<svg", '<svg class="arrow"')}</button>
             </form>
             <div class="form-success">
