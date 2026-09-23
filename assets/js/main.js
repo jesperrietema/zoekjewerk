@@ -263,7 +263,7 @@
      ====================================================================== */
   const JOBS = window.ZJW_JOBS || [];
   const initials = (s) => s.split(/\s+/).filter((w) => /^[A-Za-zÀ-ÿ]/.test(w)).slice(0, 2).map((w) => w[0].toUpperCase()).join("");
-  const LOGO_COLORS = ["#040B1C", "#0B2A5E", "#1A7FF0", "#133062", "#0B5FC7", "#1D3B6E"];
+  const LOGO_COLORS = ["#040B1C", "#0B2A5E", "#1467D6", "#133062", "#0B5FC7", "#1D3B6E"];
   const logoColor = (s) => LOGO_COLORS[[...s].reduce((a, c) => a + c.charCodeAt(0), 0) % LOGO_COLORS.length];
   const postedLabel = (d) => (d <= 1 ? "Vandaag" : d === 2 ? "Gisteren" : `${d} dagen geleden`);
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
