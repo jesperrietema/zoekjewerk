@@ -7,7 +7,11 @@
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  const ICON_ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  /* Web-app-URL van het Google Apps Script dat formulieren naar contact@zoekjewerk.nl mailt.
+     Zie apps-script/INSTALLATIE.md. Leeg = formulieren tonen een foutmelding. */
+  const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwDJf2HgNy6QlmNHOzBo8RSpXkNGoJzFufssFdrBq9MvvhxNyYfbsmocxRtBqIOPCtNCA/exec";
+
+  const ICON_ARROW ='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   const ICON_PIN = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
 
   /* ---------- Page curtain ---------- */
@@ -223,20 +227,79 @@
     });
   }
 
-  /* ---------- Forms (front-end demo) ---------- */
-  $$("[data-form]").forEach((form) => {
-    form.addEventListener("submit", (e) => {
+  /* ---------- Forms → e-mail (via Google Apps Script, zie apps-script/) ---------- */
+  const MAX_FILE_MB = 5;
+  const fieldLabel = (form, el) => {
+    const own = el.id && el.type !== "radio" && form.querySelector(`label[for="${el.id}"]`);
+    const label = own || el.closest(".field")?.querySelector(":scope > label");
+    if (label) return label.textContent.replace(/\(optioneel\)/i, "").trim();
+    return el.name.charAt(0).toUpperCase() + el.name.slice(1);
+  };
+  const toBase64 = (file) => new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result).split(",")[1]);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+  const collectForm = async (form) => {
+    const velden = [], bestanden = [];
+    for (const el of form.elements) {
+      if (!el.name || el.disabled || el.name === "website") continue;
+      if ((el.type === "radio" || el.type === "checkbox") && !el.checked) continue;
+      if (el.type === "file") {
+        for (const f of el.files) bestanden.push({ naam: f.name, type: f.type, data: await toBase64(f) });
+        continue;
+      }
+      const waarde = el.value.trim();
+      velden.push({ naam: el.name, label: fieldLabel(form, el), waarde: waarde === "Maak een keuze" ? "" : waarde });
+    }
+    const vacature = form.elements.vacature?.value;
+    return {
+      formulier: (form.dataset.form || "Formulier") + (vacature ? `: ${vacature}` : ""),
+      pagina: location.origin + location.pathname,
+      website: form.elements.website?.value || "",
+      velden,
+      bestanden,
+    };
+  };
+  const showFormError = (form, msg) => {
+    let el = $(".form-error", form);
+    if (!el) {
+      el = document.createElement("p");
+      el.className = "form-error";
+      el.setAttribute("role", "alert");
+      form.querySelector("[type=submit]").before(el);
+    }
+    el.innerHTML = msg;
+  };
+  const bindForm = (form) => {
+    // Onzichtbaar veld tegen spam-bots
+    form.insertAdjacentHTML("beforeend", '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">');
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      const tooBig = [...form.querySelectorAll("input[type=file]")].find((i) => [...i.files].some((f) => f.size > MAX_FILE_MB * 1024 * 1024));
+      if (tooBig) { tooBig.setCustomValidity(`Je bestand is groter dan ${MAX_FILE_MB} MB.`); tooBig.reportValidity(); tooBig.setCustomValidity(""); return; }
       if (!form.reportValidity()) return;
       const wrap = form.closest("[data-form-wrap]");
       const btn = form.querySelector("[type=submit]");
-      if (btn) { btn.disabled = true; btn.style.opacity = ".7"; btn.firstChild.textContent = "Versturen… "; }
-      setTimeout(() => {
+      const label = btn.firstChild.textContent;
+      btn.disabled = true; btn.style.opacity = ".7"; btn.firstChild.textContent = "Versturen… ";
+      $(".form-error", form)?.remove();
+      try {
+        if (!FORM_ENDPOINT) throw new Error("FORM_ENDPOINT is nog niet ingesteld in assets/js/main.js");
+        const res = await fetch(FORM_ENDPOINT, { method: "POST", body: JSON.stringify(await collectForm(form)) });
+        const json = await res.json();
+        if (!json.ok) throw new Error(json.fout || "Onbekende fout");
         wrap?.classList.add("is-sent");
         wrap?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
-      }, 700);
+      } catch (err) {
+        console.error("Formulier versturen mislukt:", err);
+        btn.disabled = false; btn.style.opacity = ""; btn.firstChild.textContent = label;
+        showFormError(form, 'Versturen is helaas niet gelukt. Probeer het opnieuw of mail ons via <a href="mailto:contact@zoekjewerk.nl">contact@zoekjewerk.nl</a>.');
+      }
     });
-  });
+  };
+  $$("[data-form]").forEach(bindForm);
   const bindFileDrops = (root = document) => {
     $$(".file-drop", root).forEach((drop) => {
       const input = $("input[type=file]", drop);
@@ -432,7 +495,7 @@
           <div><h3>Wie ben jij?</h3>${list(j.profile)}</div>
           <div><h3>Wat bieden ze?</h3>${list(j.offer)}</div>
           <div class="form-card" data-form-wrap id="apply">
-            <form class="form" data-form>
+            <form class="form" data-form="Sollicitatie">
               <div>
                 <h3 style="font-size:24px;letter-spacing:-.03em;margin-bottom:6px">Solliciteer direct</h3>
                 <p style="font-size:15px">Binnen 2 werkdagen heb je een persoonlijke reactie van je recruiter.</p>
@@ -459,12 +522,7 @@
             </div>
           </div>
         </div>`;
-      const form = $("[data-form]", modal);
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if (!form.reportValidity()) return;
-        setTimeout(() => form.closest("[data-form-wrap]").classList.add("is-sent"), 500);
-      });
+      bindForm($("[data-form]", modal));
       bindFileDrops(modal);
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
