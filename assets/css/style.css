@@ -823,3 +823,137 @@ a.contact-item:hover { box-shadow: inset 0 0 0 1px var(--line-strong), var(--sha
   .split-line > span { transform: none; }
   .statement .w { opacity: 1; }
 }
+
+/* ==========================================================================
+   Fotostijl: krachtiger uitstraling met foto's (bovenop de basisstijl)
+   ========================================================================== */
+
+/* Grotere, vettere koppen */
+.display { font-size: clamp(40px, 5.2vw, 70px); line-height: 1.04; letter-spacing: -.03em; font-weight: 800; }
+.h1 { font-size: clamp(36px, 4.2vw, 58px); line-height: 1.06; letter-spacing: -.028em; font-weight: 800; }
+.h2 { font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1; letter-spacing: -.024em; font-weight: 800; }
+
+/* Homepage-hero: donkerblauw met foto */
+.hero--photo { background: var(--ink); color: var(--white); padding: clamp(118px, 12vw, 150px) 0 clamp(72px, 8vw, 112px); border-bottom: 0; overflow: hidden; }
+.hero--photo .hero__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(32px, 4vw, 64px); }
+.hero--photo .job-search .btn { padding: 0 18px; }
+.job-search select { padding-left: 12px; }
+.hero--photo .hero__kicker { color: #8DC1FF; }
+.hero--photo h1 { color: var(--white); }
+.hero--photo .hero__sub { color: rgba(255, 255, 255, .8); }
+.hero--photo .hero__usps { color: rgba(255, 255, 255, .82); }
+.hero--photo .hero__usps svg { color: #8DC1FF; }
+.hero--photo .job-search { box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .55); }
+.hero__visual { position: relative; }
+.hero__visual > img { width: 100%; height: clamp(340px, 34vw, 460px); object-fit: cover; object-position: 40% center; border-radius: 16px; }
+.job-search input, .job-search select { color: var(--text); }
+.hero--photo .hero__employer { box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .6); color: var(--text); }
+@media (min-width: 961px) {
+  .hero--photo .hero__employer { position: absolute; left: -40px; bottom: -64px; width: min(330px, 75%); gap: 10px; padding: 22px 24px; }
+  .hero--photo { padding-bottom: clamp(104px, 10vw, 136px); }
+}
+@media (max-width: 960px) {
+  .hero__visual > img { height: 320px; }
+  .hero--photo .hero__employer { margin-top: 16px; }
+}
+
+/* Vakgebieden: fotokaarten */
+.sector--photo { position: relative; overflow: hidden; isolation: isolate; min-height: 440px; justify-content: flex-end; color: var(--white); background: var(--ink); box-shadow: none; }
+.sector--photo .sector__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .7s var(--ease); }
+.sector--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(4, 11, 28, .15) 0%, rgba(4, 11, 28, .45) 30%, rgba(4, 11, 28, .86) 55%, rgba(4, 11, 28, .96) 100%); }
+.sector--photo:hover .sector__img { transform: scale(1.05); }
+.sector--photo:hover { box-shadow: none; }
+.sector--photo .sector__icon { background: rgba(255, 255, 255, .16); color: var(--white); backdrop-filter: blur(6px); }
+.sector--photo h3 { color: var(--white); font-size: 26px; font-weight: 800; }
+.sector--photo p { color: rgba(255, 255, 255, .86); }
+.sector--photo .tag { background: rgba(255, 255, 255, .14); color: var(--white); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); }
+.sector--photo .link-arrow { color: var(--white); }
+
+/* Waarom wij: foto + redenen */
+.why { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.why__photo { margin: 0; }
+.why__photo img { width: 100%; height: clamp(360px, 38vw, 520px); object-fit: cover; border-radius: 16px; }
+.usps--2 { grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 960px) { .why { grid-template-columns: 1fr; } .why__photo img { height: 300px; } }
+@media (max-width: 560px) { .usps--2 { grid-template-columns: 1fr; } }
+
+/* Donkerblauwe cijferband */
+.band { background: var(--ink); color: var(--white); padding: clamp(44px, 6vw, 72px) 0; }
+.stats--band { border-top: 0; }
+.stats--band .stat { padding-top: 0; }
+.stats--band .stat__num { color: var(--white); font-size: clamp(40px, 4.6vw, 64px); font-weight: 800; letter-spacing: -.03em; }
+.stats--band .stat__num small { color: #8DC1FF; }
+.stats--band .stat p { color: rgba(255, 255, 255, .75); }
+
+/* Werkwijze: grote stapnummers */
+.step-card__num { display: block; justify-self: start; width: auto; height: auto; border-radius: 0; background: none; color: var(--accent-deep); font-size: 44px; font-weight: 800; letter-spacing: -.03em; line-height: 1; margin-bottom: 6px; }
+
+/* Afsluitend blok met foto */
+.cta--photo { position: relative; isolation: isolate; background-color: var(--ink); background-position: center; background-size: cover; }
+.cta--photo::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: linear-gradient(90deg, rgba(10, 31, 68, .97) 0%, rgba(10, 31, 68, .88) 50%, rgba(10, 31, 68, .55) 100%); }
+.cta--photo h2 { font-size: clamp(30px, 3.4vw, 46px); font-weight: 800; }
+
+/* Subpagina's: donkerblauwe kop met foto */
+.page-hero--photo { background: var(--ink); color: var(--white); border-bottom: 0; overflow: hidden; isolation: isolate; }
+.page-hero__photo { position: absolute; inset: 0 0 0 42%; z-index: -2; background-position: center; background-size: cover; background-repeat: no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%); mask-image: linear-gradient(90deg, transparent 0%, #000 45%); }
+.page-hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--ink) 30%, rgba(10, 31, 68, .68) 65%, rgba(10, 31, 68, .35) 100%); }
+.page-hero--photo h1 { color: var(--white); }
+.page-hero--photo .lead { color: rgba(255, 255, 255, .82); }
+.page-hero--photo .breadcrumb { color: rgba(255, 255, 255, .7); }
+.page-hero--photo .breadcrumb a:hover { color: var(--white); }
+.page-hero--photo .btn--ghost { --fg: var(--white); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .45); }
+.page-hero--photo .btn--ghost:hover { --bg: rgba(255, 255, 255, .1); box-shadow: inset 0 0 0 1px var(--white); }
+.page-hero--photo .stats { border-color: rgba(255, 255, 255, .18); }
+.page-hero--photo .stat__num { color: var(--white); }
+.page-hero--photo .stat__num small { color: #8DC1FF; }
+.page-hero--photo .stat p { color: rgba(255, 255, 255, .75); }
+@media (max-width: 900px) {
+  .page-hero__photo { inset: 0; -webkit-mask-image: none; mask-image: none; }
+  .page-hero--photo::after { background: rgba(10, 31, 68, .86); }
+}
+
+/* Foto-panelen (voor kandidaten, over ons) */
+.photo-panel { position: relative; margin: 0; }
+.photo-panel img { width: 100%; height: clamp(340px, 36vw, 480px); object-fit: cover; border-radius: 16px; }
+.photo-panel figcaption { position: absolute; left: 20px; bottom: 20px; display: grid; gap: 2px; padding: 14px 18px; border-radius: 10px; background: var(--white); box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .5); max-width: calc(100% - 40px); }
+.photo-panel figcaption b { font-weight: 700; }
+.photo-panel figcaption span { font-size: 14px; color: var(--muted); }
+.photo-panel--quote figcaption { left: 0; right: 0; bottom: 0; max-width: none; border-radius: 0 0 16px 16px; background: rgba(10, 31, 68, .92); color: var(--white); padding: 22px 26px; }
+.photo-panel--quote figcaption span { color: #8DC1FF; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.photo-panel--quote figcaption b { font-size: clamp(22px, 2.2vw, 28px); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+
+/* Vacaturekaarten met foto */
+.job-card { padding: 0 0 22px; overflow: hidden; gap: 16px; }
+.job-card > :not(.job-card__media) { margin-left: 22px; margin-right: 22px; }
+.job-card__media { position: relative; height: 170px; }
+.job-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.job-card:hover .job-card__media img { transform: scale(1.05); }
+.job-card__media .tag { position: absolute; left: 14px; top: 14px; background: var(--white); box-shadow: 0 4px 12px -4px rgba(0, 0, 0, .3); }
+.job-card__media .tag--filled { background: #ECFDF3; }
+.job-card__media .job-logo { position: absolute; left: 22px; bottom: -22px; width: 48px; height: 48px; box-shadow: 0 0 0 3px var(--white); }
+.job-card__media + div { padding-top: 18px; }
+.job-card__title { font-size: 21px; font-weight: 800; }
+.job-card.is-filled .job-card__media img { filter: saturate(.7); }
+
+/* Vacaturelijst met foto */
+.job-row { grid-template-columns: 112px 1fr auto; }
+.job-row__media { width: 112px; height: 84px; border-radius: 10px; overflow: hidden; }
+.job-row__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.job-row:hover .job-row__media img { transform: scale(1.06); }
+@media (max-width: 640px) {
+  .job-row { grid-template-columns: 1fr; }
+  .job-row__media { width: 100%; height: 140px; }
+}
+
+/* Vacature-paneel: kop met foto */
+.modal__head--photo { isolation: isolate; background-position: center; background-size: cover; padding-top: 72px; }
+.modal__head--photo::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 31, 68, .72), rgba(10, 31, 68, .94)); }
+
+/* Mobiel: hero onder elkaar, "Niet gevonden"-blok onder elkaar */
+@media (max-width: 960px) {
+  .hero--photo .hero__grid { grid-template-columns: 1fr; }
+  .hero__visual > img { height: 280px; }
+}
+@media (max-width: 640px) {
+  .jobs-layout .form-card[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+}

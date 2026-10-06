@@ -322,16 +322,25 @@
   const postedLabel = (d) => (d <= 1 ? "Vandaag" : d === 2 ? "Gisteren" : `${d} dagen geleden`);
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  // Foto per vakgebied (vacature mag ook een eigen "image" hebben)
+  const SECTOR_IMG = {
+    "Sales & Commercieel": "assets/images/foto/sales.jpg",
+    "Office & Digital": "assets/images/foto/office-digital.jpg",
+    "Techniek & Bouw": "assets/images/foto/techniek-bouw.jpg",
+  };
+  const jobImg = (j) => j.image || SECTOR_IMG[j.sector] || "assets/images/foto/team-overleg.jpg";
+
   // Velden mogen leeg blijven; "filled: true" = vacature is vervuld
   const tag = (v, cls = "", icon = "") => (v ? `<span class="tag ${cls}">${icon}${esc(v)}</span>` : "");
   const statusTag = (j) => (j.filled ? '<span class="tag tag--filled">Vervuld</span>' : j.posted === undefined ? "" : j.posted <= 3 ? '<span class="tag tag--new">Nieuw</span>' : `<span class="tag">${postedLabel(j.posted)}</span>`);
   const salaryHTML = (j) => (j.filled ? '<div class="job-card__salary">Vacature vervuld<small>via ZoekJeWerk.nl</small></div>' : `<div class="job-card__salary">${esc(j.salary || "Salaris in overleg")}<small>${esc(j.period || "")}</small></div>`);
 
   const cardHTML = (j, i) => `
-    <button class="job-card reveal" style="--d:${i * 0.08}s" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
-      <div class="job-card__top">
-        <div class="job-logo" style="background:${logoColor(j.company)}">${initials(j.company)}</div>
+    <button class="job-card${j.filled ? " is-filled" : ""}" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
+      <div class="job-card__media">
+        <img src="${jobImg(j)}" alt="" loading="lazy" width="960" height="640">
         ${statusTag(j)}
+        <div class="job-logo" style="background:${logoColor(j.company)}">${initials(j.company)}</div>
       </div>
       <div>
         <h3 class="job-card__title">${esc(j.title)}</h3>
@@ -347,8 +356,8 @@
     </button>`;
 
   const rowHTML = (j, i) => `
-    <button class="job-row" style="animation-delay:${Math.min(i, 8) * 0.05}s" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
-      <div class="job-logo" style="background:${logoColor(j.company)}">${initials(j.company)}</div>
+    <button class="job-row${j.filled ? " is-filled" : ""}" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
+      <div class="job-row__media"><img src="${jobImg(j)}" alt="" loading="lazy" width="960" height="640"></div>
       <div>
         <h3 class="job-row__title">${esc(j.title)}</h3>
         <p class="job-row__sub">${esc(j.company)} · ${esc(j.sector)}</p>
@@ -481,7 +490,7 @@
       if (!j) return;
       lastFocus = document.activeElement;
       $("[data-modal-content]", modal).innerHTML = `
-        <div class="modal__head">
+        <div class="modal__head modal__head--photo" style="background-image:url('${jobImg(j)}')">
           <div class="orb orb--gold"></div>
           <div class="modal__head-inner">
             <div class="job-card__meta">

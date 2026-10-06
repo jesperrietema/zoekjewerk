@@ -13,7 +13,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B2A5E'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='40' fill='%23fff'%3Ez%3C/text%3E%3Ccircle cx='48' cy='44' r='5' fill='%231A7FF0'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -54,7 +54,7 @@
   </div>
 
   <main id="main">
-    <section class="hero hero--bureau">
+    <section class="hero hero--bureau hero--photo">
       <div class="container hero__grid">
         <div class="hero__main">
           <p class="hero__kicker">Recruitmentbureau voor iedereen, van student tot ervaren professional</p>
@@ -71,18 +71,16 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Reactie binnen 24 uur</li>
           </ul>
         </div>
+        <div class="hero__visual">
+          <img src="assets/images/foto/hero-gesprek.jpg" alt="Twee mensen in gesprek aan tafel" width="960" height="640" fetchpriority="high">
         <aside class="hero__employer">
           <span class="eyebrow">Voor werkgevers</span>
           <h2 class="h3">Personeel nodig?</h2>
           <p>Binnen 5 werkdagen een shortlist met kandidaten die we zelf hebben gesproken. Je betaalt alleen bij een geslaagde plaatsing.</p>
-          <ul class="checklist">
-            <li><div>Kandidaten op elk niveau, van starter tot ervaren</div></li>
-            <li><div>Eén vast aanspreekpunt</div></li>
-            <li><div>No cure, no pay</div></li>
-          </ul>
           <a class="btn btn--block" href="voor-werkgevers.html#aanvraag">Talent aanvragen <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="link-arrow" href="voor-werkgevers.html">Meer over onze werkwijze <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
         </aside>
+        </div>
       </div>
     </section>
 
@@ -96,21 +94,24 @@
           <p class="lead">We kiezen bewust voor drie vakgebieden. Zo kennen we de markt, de functies en de organisaties goed.</p>
         </div>
         <div class="sectors">
-          <a class="sector reveal" style="--d:0.00s" href="vacatures.html?sector=Sales+%26+Commercieel">
+          <a class="sector sector--photo" href="vacatures.html?sector=Sales+%26+Commercieel">
+            <img class="sector__img" src="assets/images/foto/sales.jpg" alt="Handdruk aan tafel na een gesprek" loading="lazy" width="960" height="640">
             <div class="sector__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
             <h3>Sales &amp; Commercieel</h3>
             <p>Voor commerciële talenten die energie halen uit klantcontact en resultaat. Van binnendienst tot accountmanagement.</p>
             <div class="job-card__meta"><span class="tag">Accountmanager</span><span class="tag">Inside sales</span><span class="tag">Binnendienst</span><span class="tag">Sales trainee</span></div>
             <span class="link-arrow">Bekijk vacatures <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
           </a>
-          <a class="sector reveal" style="--d:0.08s" href="vacatures.html?sector=Office+%26+Digital">
+          <a class="sector sector--photo" href="vacatures.html?sector=Office+%26+Digital">
+            <img class="sector__img" src="assets/images/foto/office-digital.jpg" alt="Vrouw aan het werk achter een laptop" loading="lazy" width="960" height="640">
             <div class="sector__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2 19h20"/></svg></div>
             <h3>Office &amp; Digital</h3>
             <p>Voor organisatoren en digitale talenten die een kantoor draaiende houden of online het verschil maken.</p>
             <div class="job-card__meta"><span class="tag">Office manager</span><span class="tag">Administratie</span><span class="tag">Marketing &amp; content</span><span class="tag">Online marketing</span></div>
             <span class="link-arrow">Bekijk vacatures <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
           </a>
-          <a class="sector reveal" style="--d:0.16s" href="vacatures.html?sector=Techniek+%26+Bouw">
+          <a class="sector sector--photo" href="vacatures.html?sector=Techniek+%26+Bouw">
+            <img class="sector__img" src="assets/images/foto/techniek-bouw.jpg" alt="Monteur met helm en veiligheidshesje" loading="lazy" width="960" height="640">
             <div class="sector__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></div>
             <h3>Techniek &amp; Bouw</h3>
             <p>Voor technisch talent op mbo- en hbo-niveau, van starter tot ervaren vakman, in bouw, installatie en duurzame techniek.</p>
@@ -138,18 +139,28 @@
     </section>
 
     <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Waarom ZoekJeWerk.nl</span>
-          <h2 class="h2">Waarom kandidaten en werkgevers voor ons kiezen</h2>
-        </div>
-        <div class="usps">
+      <div class="container why">
+        <figure class="why__photo">
+          <img src="assets/images/foto/team-overleg.jpg" alt="Team in overleg in een licht kantoor" loading="lazy" width="960" height="640">
+        </figure>
+        <div class="why__copy">
+          <div class="section-head" style="margin-bottom:28px">
+            <span class="eyebrow">Waarom ZoekJeWerk.nl</span>
+            <h2 class="h2">Waarom kandidaten en werkgevers voor ons kiezen</h2>
+          </div>
+        <div class="usps usps--2">
           <div class="usp"><div class="usp__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><h3>Persoonlijk</h3><p>Eén vast aanspreekpunt dat jou of je organisatie echt kent.</p></div>
           <div class="usp"><div class="usp__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Selectief</h3><p>We stellen alleen kandidaten voor die we zelf hebben gesproken.</p></div>
           <div class="usp"><div class="usp__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Snel</h3><p>Binnen 24 uur een reactie en binnen 5 werkdagen een shortlist.</p></div>
           <div class="usp"><div class="usp__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></div><h3>Eerlijk</h3><p>Gratis voor kandidaten. Werkgevers betalen alleen bij een plaatsing.</p></div>
         </div>
-        <div class="stats mt-l">
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="container">
+        <div class="stats stats--band">
           <div class="stat"><div class="stat__num">180<small>+</small></div><p>Talenten in ons netwerk</p></div>
           <div class="stat"><div class="stat__num">25<small>+</small></div><p>Succesvolle plaatsingen</p></div>
           <div class="stat"><div class="stat__num">5<small> dagen</small></div><p>Van aanvraag tot shortlist</p></div>
@@ -217,7 +228,7 @@
 
     <section class="section--tight">
       <div class="container">
-        <div class="cta">
+        <div class="cta cta--photo" style="background-image:url('assets/images/foto/cta-team.jpg')">
           <div class="cta__inner">
             <h2>Vragen of direct kennismaken?</h2>
             <div class="cta__side">
