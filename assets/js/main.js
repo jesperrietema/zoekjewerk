@@ -322,23 +322,26 @@
   const postedLabel = (d) => (d <= 1 ? "Vandaag" : d === 2 ? "Gisteren" : `${d} dagen geleden`);
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  // Velden mogen leeg blijven; "filled: true" = vacature is vervuld
+  const tag = (v, cls = "", icon = "") => (v ? `<span class="tag ${cls}">${icon}${esc(v)}</span>` : "");
+  const statusTag = (j) => (j.filled ? '<span class="tag tag--filled">Vervuld</span>' : j.posted === undefined ? "" : j.posted <= 3 ? '<span class="tag tag--new">Nieuw</span>' : `<span class="tag">${postedLabel(j.posted)}</span>`);
+  const salaryHTML = (j) => (j.filled ? '<div class="job-card__salary">Vacature vervuld<small>via ZoekJeWerk.nl</small></div>' : `<div class="job-card__salary">${esc(j.salary || "Salaris in overleg")}<small>${esc(j.period || "")}</small></div>`);
+
   const cardHTML = (j, i) => `
     <button class="job-card reveal" style="--d:${i * 0.08}s" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
       <div class="job-card__top">
         <div class="job-logo" style="background:${logoColor(j.company)}">${initials(j.company)}</div>
-        ${j.posted <= 3 ? '<span class="tag tag--new">Nieuw</span>' : `<span class="tag">${postedLabel(j.posted)}</span>`}
+        ${statusTag(j)}
       </div>
       <div>
         <h3 class="job-card__title">${esc(j.title)}</h3>
         <p class="job-card__company">${esc(j.company)} · ${esc(j.sector)}</p>
       </div>
       <div class="job-card__meta">
-        <span class="tag">${ICON_PIN}${esc(j.location)}</span>
-        <span class="tag tag--accent">${esc(j.type)}</span>
-        <span class="tag">${esc(j.level)}</span>
+        ${tag(j.location, "", ICON_PIN)}${tag(j.type, "tag--accent")}${tag(j.level)}
       </div>
       <div class="job-card__foot">
-        <div class="job-card__salary">${esc(j.salary)}<small>${esc(j.period)}</small></div>
+        ${salaryHTML(j)}
         <span class="job-card__go">${ICON_ARROW}</span>
       </div>
     </button>`;
@@ -350,29 +353,42 @@
         <h3 class="job-row__title">${esc(j.title)}</h3>
         <p class="job-row__sub">${esc(j.company)} · ${esc(j.sector)}</p>
         <div class="job-card__meta">
-          <span class="tag">${ICON_PIN}${esc(j.location)}</span>
-          <span class="tag tag--accent">${esc(j.type)}</span>
-          <span class="tag">${esc(j.hours)}</span>
-          <span class="tag">${esc(j.level)}</span>
+          ${j.filled ? '<span class="tag tag--filled">Vervuld</span>' : ""}${tag(j.location, "", ICON_PIN)}${tag(j.type, "tag--accent")}${tag(j.hours)}${tag(j.level)}
         </div>
       </div>
       <div class="job-row__right">
-        <div class="job-card__salary">${esc(j.salary)}<small>${esc(j.period)}</small></div>
+        ${salaryHTML(j)}
         <span class="job-card__go">${ICON_ARROW}</span>
       </div>
     </button>`;
 
+  // Melding als er (nog) geen vacatures online staan
+  const geenVacatures = `
+    <div class="empty empty--wide">
+      <h3>Op dit moment staan er geen vacatures online</h3>
+      <p>Veel opdrachten komen binnen voordat ze online staan. Meld je aan, dan nemen we contact met je op zodra er een passende vacature is.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+        <a class="btn btn--accent btn--sm" href="voor-kandidaten.html#aanmelden">Meld je aan</a>
+        <a class="btn btn--ghost btn--sm" href="contact.html">Neem contact op</a>
+      </div>
+    </div>`;
+
   // Homepage featured
   const featured = $("#featured-jobs");
   if (featured) {
-    const list = JOBS.filter((j) => j.featured).concat(JOBS.filter((j) => !j.featured)).slice(0, 3);
-    featured.innerHTML = list.map(cardHTML).join("");
+    const open = JOBS.filter((j) => !j.filled);
+    const list = open.filter((j) => j.featured).concat(open.filter((j) => !j.featured), JOBS.filter((j) => j.filled)).slice(0, 3);
+    featured.innerHTML = list.length ? list.map(cardHTML).join("") : geenVacatures;
     $$(".reveal", featured).forEach((el) => io.observe(el));
   }
 
   // Vacatures page
   const listEl = $("#jobs-list");
-  if (listEl) {
+  if (listEl && !JOBS.length) {
+    $(".jobs-layout")?.classList.add("is-empty");
+    $("#jobs-count").textContent = "";
+    listEl.innerHTML = geenVacatures;
+  } else if (listEl) {
     const params = new URLSearchParams(location.search);
     const state = {
       q: params.get("q") || "",
@@ -386,11 +402,12 @@
     const locSelect = $("#loc");
     qInput.value = state.q;
 
-    const unique = (k) => [...new Set(JOBS.map((j) => j[k]))].sort((a, b) => a.localeCompare(b, "nl"));
-    const cities = [...new Set(JOBS.flatMap((j) => j.location.split(" / ").filter((c) => c !== "Remote")))].sort((a, b) => a.localeCompare(b, "nl"));
-    locSelect.innerHTML = '<option value="">Alle locaties</option>' + cities.map((c) => `<option ${c === state.loc ? "selected" : ""}>${esc(c)}</option>`).join("") + (JOBS.some((j) => j.location.includes("Remote")) ? `<option value="Remote" ${state.loc === "Remote" ? "selected" : ""}>Remote</option>` : "");
+    const unique = (k) => [...new Set(JOBS.map((j) => j[k]).filter(Boolean))].sort((a, b) => a.localeCompare(b, "nl"));
+    const cities = [...new Set(JOBS.flatMap((j) => (j.location || "").split(" / ").filter((c) => c && c !== "Remote")))].sort((a, b) => a.localeCompare(b, "nl"));
+    locSelect.innerHTML = '<option value="">Alle locaties</option>' + cities.map((c) => `<option ${c === state.loc ? "selected" : ""}>${esc(c)}</option>`).join("") + (JOBS.some((j) => (j.location || "").includes("Remote")) ? `<option value="Remote" ${state.loc === "Remote" ? "selected" : ""}>Remote</option>` : "");
 
     const buildFilter = (el, key, name) => {
+      el.parentElement.hidden = !unique(key).length;
       el.innerHTML = unique(key).map((v, i) => {
         const id = `${name}-${i}`;
         const n = JOBS.filter((j) => j[key] === v).length;
@@ -405,18 +422,19 @@
     buildFilter($("#f-type"), "type", "type");
     buildFilter($("#f-level"), "level", "level");
 
-    const salaryMin = (j) => parseInt(j.salary.replace(/\./g, "").match(/\d+/)?.[0] || "0", 10) * (j.period.includes("uur") ? 160 : 1);
+    const salaryMin = (j) => parseInt((j.salary || "").replace(/\./g, "").match(/\d+/)?.[0] || "0", 10) * ((j.period || "").includes("uur") ? 160 : 1);
 
     function render() {
       const q = state.q.trim().toLowerCase();
       let res = JOBS.filter((j) =>
-        (!q || [j.title, j.company, j.sector, j.summary, j.location].join(" ").toLowerCase().includes(q)) &&
-        (!state.loc || j.location.includes(state.loc)) &&
+        (!q || [j.title, j.company, j.sector, j.summary, j.location].filter(Boolean).join(" ").toLowerCase().includes(q)) &&
+        (!state.loc || (j.location || "").includes(state.loc)) &&
         (!state.sector.size || state.sector.has(j.sector)) &&
         (!state.type.size || state.type.has(j.type)) &&
         (!state.level.size || state.level.has(j.level))
       );
       res.sort(state.sort === "salary" ? (a, b) => salaryMin(b) - salaryMin(a) : state.sort === "az" ? (a, b) => a.title.localeCompare(b.title, "nl") : (a, b) => a.posted - b.posted);
+      res = res.filter((j) => !j.filled).concat(res.filter((j) => j.filled));
       $("#jobs-count").innerHTML = `<b>${res.length}</b> ${res.length === 1 ? "vacature" : "vacatures"} gevonden`;
       listEl.innerHTML = res.length ? res.map(rowHTML).join("") : `
         <div class="empty">
@@ -467,25 +485,24 @@
           <div class="orb orb--gold"></div>
           <div class="modal__head-inner">
             <div class="job-card__meta">
-              <span class="tag tag--accent">${esc(j.type)}</span>
-              <span class="tag">${esc(j.level)}</span>
-              <span class="tag">${postedLabel(j.posted)}</span>
+              ${j.filled ? '<span class="tag tag--filled">Vervuld</span>' : ""}${tag(j.type, "tag--accent")}${tag(j.level)}${!j.filled && j.posted !== undefined ? tag(postedLabel(j.posted)) : ""}
             </div>
             <h2 id="modal-title">${esc(j.title)}</h2>
-            <p style="color:var(--on-dark-muted)">${esc(j.company)} · ${esc(j.sector)}</p>
+            <p style="color:var(--on-dark-muted)">${esc(j.company)} · ${esc(j.sector)}${j.website ? ` · <a href="${esc(j.website)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">${esc(j.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""))}</a>` : ""}</p>
           </div>
         </div>
-        <div class="modal__facts">
-          <div><span>Locatie</span><b>${esc(j.location)}</b></div>
-          <div><span>Uren</span><b>${esc(j.hours)}</b></div>
-          <div><span>Salaris</span><b>${esc(j.salary)}</b></div>
-        </div>
+        ${[["Locatie", j.location], ["Uren", j.hours], ["Salaris", j.salary]].some(([, v]) => v) ? `<div class="modal__facts">${[["Locatie", j.location], ["Uren", j.hours], ["Salaris", j.salary]].filter(([, v]) => v).map(([k, v]) => `<div><span>${k}</span><b>${esc(v)}</b></div>`).join("")}</div>` : ""}
         <div class="modal__body">
-          <div><h3>Over de functie</h3><p>${esc(j.summary)}</p></div>
-          <div><h3>Wat ga je doen?</h3>${list(j.tasks)}</div>
-          <div><h3>Wie ben jij?</h3>${list(j.profile)}</div>
-          <div><h3>Wat bieden ze?</h3>${list(j.offer)}</div>
-          <div class="form-card" data-form-wrap id="apply">
+          ${j.summary ? `<div><h3>Over de functie</h3><p>${esc(j.summary)}</p></div>` : ""}
+          ${j.tasks?.length ? `<div><h3>Wat ga je doen?</h3>${list(j.tasks)}</div>` : ""}
+          ${j.profile?.length ? `<div><h3>Wie ben jij?</h3>${list(j.profile)}</div>` : ""}
+          ${j.offer?.length ? `<div><h3>Wat bieden ze?</h3>${list(j.offer)}</div>` : ""}
+          ${j.filled ? `<div class="form-card filled-note">
+            <h3>Deze vacature is vervuld</h3>
+            <p>Via ZoekJeWerk.nl is deze functie ingevuld. Interesse in vergelijkbaar werk? Meld je aan, dan nemen we contact op zodra er een passende vacature is.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn--accent btn--sm" href="voor-kandidaten.html#aanmelden">Meld je aan</a><a class="btn btn--ghost btn--sm" href="vacatures.html">Andere vacatures</a></div>
+          </div>` : ""}
+          <div class="form-card" data-form-wrap id="apply"${j.filled ? " hidden" : ""}>
             <form class="form" data-form="Sollicitatie">
               <div>
                 <h3 style="font-size:24px;letter-spacing:-.03em;margin-bottom:6px">Solliciteer direct</h3>
@@ -513,7 +530,7 @@
             </div>
           </div>
         </div>`;
-      bindForm($("[data-form]", modal));
+      if (!j.filled) bindForm($("[data-form]", modal));
       bindFileDrops(modal);
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
