@@ -333,6 +333,7 @@
     "Sales & Commercieel": "assets/images/foto/sales.jpg",
     "Office & Digital": "assets/images/foto/office-digital.jpg",
     "Techniek & Bouw": "assets/images/foto/techniek-bouw.jpg",
+    "Horeca": "assets/images/foto/horeca.jpg",
   };
   const jobImg = (j) => j.image || SECTOR_IMG[j.sector] || "assets/images/foto/team-overleg.jpg";
 
@@ -392,7 +393,7 @@
   const featured = $("#featured-jobs");
   if (featured) {
     const open = JOBS.filter((j) => !j.filled);
-    const list = open.filter((j) => j.featured).concat(open.filter((j) => !j.featured), JOBS.filter((j) => j.filled)).slice(0, 3);
+    const list = open.filter((j) => j.featured).concat(open.filter((j) => !j.featured), JOBS.filter((j) => j.filled)).slice(0, 4);
     featured.innerHTML = list.length ? list.map(cardHTML).join("") : geenVacatures;
     $$(".reveal", featured).forEach((el) => io.observe(el));
   }

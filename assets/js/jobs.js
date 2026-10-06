@@ -2,7 +2,7 @@
    Vacatures — pas deze lijst aan om vacatures toe te voegen of te wijzigen.
    featured: true  → wordt getoond op de homepage (maximaal 3).
    sector: gebruik altijd een van deze drie (dan werken de filters en links):
-     "Sales & Commercieel" · "Office & Digital" · "Techniek & Bouw"
+     "Sales & Commercieel" · "Office & Digital" · "Techniek & Bouw" · "Horeca"
    ========================================================================== */
 
 window.ZJW_JOBS = [
@@ -103,6 +103,39 @@ window.ZJW_JOBS = [
       "Auto van de zaak of reiskostenvergoeding",
       "Opleidingsbudget en doorgroei naar projectleider",
       "Cao Bouw & Infra met goede secundaire voorwaarden"
+    ]
+  },
+  {
+    id: "medewerker-bediening-groningen",
+    title: "Medewerker Bediening (parttime)",
+    company: "Restaurant in de binnenstad",
+    sector: "Horeca",
+    location: "Groningen",
+    type: "Parttime",
+    hours: "12–24 uur",
+    level: "Student",
+    salary: "€14 – €16",
+    period: "per uur + fooi",
+    posted: 1,
+    featured: true,
+    summary: "Een bijbaan naast je studie in een druk restaurant in de Groningse binnenstad, in een jong team dat gastvrijheid hoog in het vaandel heeft.",
+    tasks: [
+      "Ontvangen van gasten en opnemen van bestellingen",
+      "Serveren van gerechten en dranken",
+      "Adviseren over de kaart en de wijnen",
+      "Zorgen dat het restaurant er netjes en verzorgd uitziet"
+    ],
+    profile: [
+      "Je bent gastvrij, vrolijk en houdt van aanpakken",
+      "Ervaring in de bediening is mooi, maar niet nodig",
+      "Beschikbaar op minimaal twee avonden en één weekenddag",
+      "Goede beheersing van Nederlands of Engels"
+    ],
+    offer: [
+      "Flexibel rooster rondom je studie",
+      "Fooi wordt eerlijk verdeeld",
+      "Gratis personeelsmaaltijd tijdens je dienst",
+      "Doorgroeien naar shiftleider"
     ]
   },
   {
