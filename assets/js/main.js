@@ -14,6 +14,12 @@
   const ICON_ARROW ='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   const ICON_PIN = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
 
+  /* ---------- WhatsApp ---------- */
+  const WHATSAPP = "https://wa.me/31644904351";
+  const WA_ICON = '<svg class="wa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4l-4.5 1.1z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.8-2-1-1 1c-1.2-.4-2.3-1.5-2.7-2.7l1-1-1-2L9 8.5z"/></svg>';
+  const waLink = (tekst) => `${WHATSAPP}?text=${encodeURIComponent(tekst)}`;
+  document.body.insertAdjacentHTML("beforeend", `<a class="wa-float" href="${waLink("Hoi ZoekJeWerk.nl, ik heb een vraag.")}" target="_blank" rel="noopener" aria-label="Stuur ons een WhatsApp-bericht">${WA_ICON}<span>App ons</span></a>`);
+
   /* ---------- Page curtain (uitgeschakeld) ---------- */
   $(".curtain")?.remove();
 
@@ -506,6 +512,7 @@
           ${j.tasks?.length ? `<div><h3>Wat ga je doen?</h3>${list(j.tasks)}</div>` : ""}
           ${j.profile?.length ? `<div><h3>Wie ben jij?</h3>${list(j.profile)}</div>` : ""}
           ${j.offer?.length ? `<div><h3>Wat bieden ze?</h3>${list(j.offer)}</div>` : ""}
+          ${j.filled ? "" : `<p class="modal__wa">${WA_ICON}<span>Vraag over deze vacature? <a href="${waLink(`Hoi ZoekJeWerk.nl, ik heb een vraag over de vacature ${j.title}.`)}" target="_blank" rel="noopener">App ons via WhatsApp</a></span></p>`}
           ${j.filled ? `<div class="form-card filled-note">
             <h3>Deze vacature is vervuld</h3>
             <p>Via ZoekJeWerk.nl is deze functie ingevuld. Interesse in vergelijkbaar werk? Meld je aan, dan nemen we contact op zodra er een passende vacature is.</p>
