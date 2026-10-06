@@ -7,6 +7,105 @@
 
 window.ZJW_JOBS = [
   {
+    id: "accountmanager-b2b-groningen",
+    title: "Accountmanager B2B",
+    company: "Groothandel in installatietechniek",
+    sector: "Sales & Commercieel",
+    location: "Groningen",
+    type: "Fulltime",
+    hours: "40 uur",
+    level: "Young professional",
+    salary: "€3.000 – €3.800",
+    period: "per maand + bonus",
+    posted: 1,
+    featured: true,
+    summary: "Je bouwt langdurige relaties op met installateurs en aannemers in Groningen, Friesland en Drenthe, en breidt je eigen klantportefeuille stap voor stap uit.",
+    tasks: [
+      "Bezoeken en adviseren van bestaande zakelijke klanten",
+      "Actief benaderen van nieuwe klanten in je regio",
+      "Opstellen van offertes samen met de binnendienst",
+      "Bijhouden van afspraken en kansen in het CRM"
+    ],
+    profile: [
+      "Mbo-4- of hbo-denkniveau, bijvoorbeeld commerciële economie",
+      "1 tot 3 jaar ervaring in sales of accountmanagement",
+      "Je haalt energie uit klantcontact en het sluiten van deals",
+      "Rijbewijs B"
+    ],
+    offer: [
+      "Auto van de zaak, ook privé te gebruiken",
+      "Bonusregeling op basis van omzet",
+      "Salestraining en een ervaren collega als buddy",
+      "Informele sfeer in een groeiend familiebedrijf"
+    ]
+  },
+  {
+    id: "marketing-medewerker-assen",
+    title: "Allround Marketing Medewerker",
+    company: "Groeiende webshop",
+    sector: "Office & Digital",
+    location: "Assen",
+    type: "Fulltime",
+    hours: "32–40 uur",
+    level: "Starter",
+    salary: "€2.700 – €3.200",
+    period: "per maand",
+    posted: 2,
+    featured: true,
+    summary: "Je maakt content voor de website, social media en nieuwsbrieven van een webshop die hard groeit in Nederland en België, en je ziet direct wat je werk oplevert.",
+    tasks: [
+      "Schrijven van productteksten, blogs en nieuwsbrieven",
+      "Maken en inplannen van posts voor social media",
+      "Beheren van de website in het CMS",
+      "Bijhouden van bereik en verkoop per campagne"
+    ],
+    profile: [
+      "Afgeronde mbo-4- of hbo-opleiding in marketing of communicatie",
+      "Sterk in schrijven en visueel ingesteld",
+      "Ervaring met Canva of vergelijkbare tools",
+      "Je werkt graag zelfstandig en komt met eigen ideeën"
+    ],
+    offer: [
+      "Veel ruimte voor eigen ideeën",
+      "Budget voor cursussen in online marketing",
+      "Personeelskorting op het assortiment",
+      "Gratis parkeren en een verzorgde lunch"
+    ]
+  },
+  {
+    id: "werkvoorbereider-utiliteitsbouw-groningen",
+    title: "Werkvoorbereider Utiliteitsbouw",
+    company: "Bouwbedrijf in Noord-Nederland",
+    sector: "Techniek & Bouw",
+    location: "Groningen",
+    type: "Fulltime",
+    hours: "40 uur",
+    level: "Ervaren",
+    salary: "€3.600 – €4.600",
+    period: "per maand",
+    posted: 3,
+    featured: true,
+    summary: "Je vertaalt het ontwerp naar een uitvoerbaar plan voor scholen, kantoren en zorggebouwen, samen met de projectleider en de uitvoerder.",
+    tasks: [
+      "Opstellen van planningen en werktekeningen",
+      "Aanvragen van offertes en inkopen van materialen",
+      "Afstemmen met onderaannemers en leveranciers",
+      "Bewaken van kwaliteit, veiligheid en budget"
+    ],
+    profile: [
+      "Mbo-4- of hbo-opleiding bouwkunde of civiele techniek",
+      "Minimaal 3 jaar ervaring als werkvoorbereider",
+      "Georganiseerd, nauwkeurig en communicatief sterk",
+      "Rijbewijs B"
+    ],
+    offer: [
+      "Vast contract bij een stabiele werkgever",
+      "Auto van de zaak of reiskostenvergoeding",
+      "Opleidingsbudget en doorgroei naar projectleider",
+      "Cao Bouw & Infra met goede secundaire voorwaarden"
+    ]
+  },
+  {
     id: "webdesigner-hamminga-digital",
     title: "Webdesigner",
     company: "Hamminga Digital",
