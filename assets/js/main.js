@@ -377,9 +377,9 @@
     const state = {
       q: params.get("q") || "",
       loc: params.get("locatie") || "",
-      sector: new Set(params.getAll("sector")),
-      type: new Set(params.getAll("type")),
-      level: new Set(params.getAll("niveau")),
+      sector: new Set(params.getAll("sector").filter(Boolean)),
+      type: new Set(params.getAll("type").filter(Boolean)),
+      level: new Set(params.getAll("niveau").filter(Boolean)),
       sort: "new",
     };
     const qInput = $("#q");
