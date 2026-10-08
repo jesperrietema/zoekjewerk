@@ -7,6 +7,31 @@
 
 window.ZJW_JOBS = [
   {
+    id: "bediening-mamma-mia-hoogezand",
+    title: "Medewerker Bediening",
+    company: "Pizzeria Mamma Mia Hoogezand",
+    website: "https://mammamia-hoogezand.nl",
+    logo: "assets/images/logos/mamma-mia-hoogezand.png",
+    sector: "Horeca",
+    location: "Hoogezand",
+    hours: "Avonden, di t/m zo",
+    level: "Vanaf 17 jaar",
+    posted: 0,
+    featured: true,
+    highlight: true,                               // label "Uitgelicht" en altijd bovenaan
+    summary: "Pizzeria Mamma Mia aan het Gorecht-Oost in Hoogezand is een traditioneel Italiaans restaurant met terras, met ambachtelijke pizza's, verse salades, huisgemaakte soepen en vlees- en visgerechten. Voor de bediening zoeken we een gastvrije collega vanaf 17 jaar.",
+    tasks: [
+      "Gasten ontvangen en naar hun tafel begeleiden",
+      "Bestellingen opnemen en gerechten en dranken serveren",
+      "Afrekenen en tafels netjes houden, binnen en op het terras"
+    ],
+    profile: [
+      "Je bent 17 jaar of ouder",
+      "Je bent gastvrij, vrolijk en houdt van aanpakken",
+      "Je kunt werken op avonden tussen 16:00 en 22:00 uur, ook in het weekend"
+    ]
+  },
+  {
     id: "accountmanager-b2b-groningen",
     title: "Accountmanager B2B",
     company: "Groothandel in installatietechniek",

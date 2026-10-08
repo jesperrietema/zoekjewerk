@@ -335,19 +335,22 @@
     "Techniek & Bouw": "assets/images/foto/techniek-bouw.jpg",
     "Horeca": "assets/images/foto/horeca.jpg",
   };
+  const logoHTML = (j) => (j.logo
+    ? `<div class="job-logo job-logo--img"><img src="${esc(j.logo)}" alt="Logo ${esc(j.company)}" loading="lazy"></div>`
+    : `<div class="job-logo" style="background:${logoColor(j.company)}">${initials(j.company)}</div>`);
   const jobImg = (j) => j.image || SECTOR_IMG[j.sector] || "assets/images/foto/team-overleg.jpg";
 
   // Velden mogen leeg blijven; "filled: true" = vacature is vervuld
   const tag = (v, cls = "", icon = "") => (v ? `<span class="tag ${cls}">${icon}${esc(v)}</span>` : "");
-  const statusTag = (j) => (j.filled ? '<span class="tag tag--filled">Vervuld</span>' : j.posted === undefined ? "" : j.posted <= 3 ? '<span class="tag tag--new">Nieuw</span>' : `<span class="tag">${postedLabel(j.posted)}</span>`);
+  const statusTag = (j) => (j.filled ? '<span class="tag tag--filled">Vervuld</span>' : j.highlight ? '<span class="tag tag--highlight">Uitgelicht</span>' : j.posted === undefined ? "" : j.posted <= 3 ? '<span class="tag tag--new">Nieuw</span>' : `<span class="tag">${postedLabel(j.posted)}</span>`);
   const salaryHTML = (j) => (j.filled ? '<div class="job-card__salary">Vacature vervuld<small>via ZoekJeWerk.nl</small></div>' : `<div class="job-card__salary">${esc(j.salary || "Salaris in overleg")}<small>${esc(j.period || "")}</small></div>`);
 
   const cardHTML = (j, i) => `
-    <button class="job-card${j.filled ? " is-filled" : ""}" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
+    <button class="job-card${j.filled ? " is-filled" : ""}${j.highlight ? " is-highlight" : ""}" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
       <div class="job-card__media">
         <img src="${jobImg(j)}" alt="" loading="lazy" width="960" height="640">
         ${statusTag(j)}
-        <div class="job-logo" style="background:${logoColor(j.company)}">${initials(j.company)}</div>
+        ${logoHTML(j)}
       </div>
       <div>
         <h3 class="job-card__title">${esc(j.title)}</h3>
@@ -363,13 +366,13 @@
     </button>`;
 
   const rowHTML = (j, i) => `
-    <button class="job-row${j.filled ? " is-filled" : ""}" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
+    <button class="job-row${j.filled ? " is-filled" : ""}${j.highlight ? " is-highlight" : ""}" data-job="${j.id}" aria-label="Bekijk vacature ${esc(j.title)}">
       <div class="job-row__media"><img src="${jobImg(j)}" alt="" loading="lazy" width="960" height="640"></div>
       <div>
         <h3 class="job-row__title">${esc(j.title)}</h3>
         <p class="job-row__sub">${esc(j.company)} · ${esc(j.sector)}</p>
         <div class="job-card__meta">
-          ${j.filled ? '<span class="tag tag--filled">Vervuld</span>' : ""}${tag(j.location, "", ICON_PIN)}${tag(j.type, "tag--accent")}${tag(j.hours)}${tag(j.level)}
+          ${j.filled ? '<span class="tag tag--filled">Vervuld</span>' : j.highlight ? '<span class="tag tag--highlight">Uitgelicht</span>' : ""}${tag(j.location, "", ICON_PIN)}${tag(j.type, "tag--accent")}${tag(j.hours)}${tag(j.level)}
         </div>
       </div>
       <div class="job-row__right">
@@ -393,7 +396,7 @@
   const featured = $("#featured-jobs");
   if (featured) {
     const open = JOBS.filter((j) => !j.filled);
-    const list = open.filter((j) => j.featured).concat(open.filter((j) => !j.featured), JOBS.filter((j) => j.filled)).slice(0, 4);
+    const list = open.filter((j) => j.highlight).concat(open.filter((j) => !j.highlight && j.featured), open.filter((j) => !j.highlight && !j.featured), JOBS.filter((j) => j.filled)).slice(0, 4);
     featured.innerHTML = list.length ? list.map(cardHTML).join("") : geenVacatures;
     $$(".reveal", featured).forEach((el) => io.observe(el));
   }
@@ -450,7 +453,7 @@
         (!state.level.size || state.level.has(j.level))
       );
       res.sort(state.sort === "salary" ? (a, b) => salaryMin(b) - salaryMin(a) : state.sort === "az" ? (a, b) => a.title.localeCompare(b.title, "nl") : (a, b) => a.posted - b.posted);
-      res = res.filter((j) => !j.filled).concat(res.filter((j) => j.filled));
+      res = res.filter((j) => j.highlight && !j.filled).concat(res.filter((j) => !j.highlight && !j.filled), res.filter((j) => j.filled));
       $("#jobs-count").innerHTML = `<b>${res.length}</b> ${res.length === 1 ? "vacature" : "vacatures"} gevonden`;
       listEl.innerHTML = res.length ? res.map(rowHTML).join("") : `
         <div class="empty">
@@ -503,6 +506,7 @@
             <div class="job-card__meta">
               ${j.filled ? '<span class="tag tag--filled">Vervuld</span>' : ""}${tag(j.type, "tag--accent")}${tag(j.level)}${!j.filled && j.posted !== undefined ? tag(postedLabel(j.posted)) : ""}
             </div>
+            ${j.logo ? `<img class="modal__logo" src="${esc(j.logo)}" alt="Logo ${esc(j.company)}">` : ""}
             <h2 id="modal-title">${esc(j.title)}</h2>
             <p style="color:var(--on-dark-muted)">${esc(j.company)} · ${esc(j.sector)}${j.website ? ` · <a href="${esc(j.website)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">${esc(j.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""))}</a>` : ""}</p>
           </div>

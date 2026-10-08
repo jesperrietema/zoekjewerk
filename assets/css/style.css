@@ -996,3 +996,12 @@ body.menu-open .wa-float, .modal.is-open ~ .wa-float { display: none; }
 @media (max-width: 1100px) { #featured-jobs { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { #featured-jobs { grid-template-columns: 1fr; } }
 #specialisaties .sector--photo h3 { font-size: 23px; }
+
+/* Uitgelichte vacature */
+.tag--highlight { background: #FFF4D6 !important; color: #7A4B00 !important; box-shadow: inset 0 0 0 1px #F5C451 !important; font-weight: 700; }
+.job-card.is-highlight, .job-row.is-highlight { box-shadow: inset 0 0 0 2px var(--accent-deep), var(--shadow); }
+.job-logo--img { background: #000; overflow: hidden; padding: 0; }
+.job-logo--img img { width: 100%; height: 100%; object-fit: cover; }
+.modal__logo { width: 64px; height: 64px; border-radius: 12px; box-shadow: 0 0 0 2px rgba(255, 255, 255, .7); }
+.modal__facts { grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); }
+@media (max-width: 560px) { .modal__facts { grid-template-columns: 1fr; } }
